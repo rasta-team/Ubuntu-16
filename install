@@ -102,6 +102,7 @@ cd
 echo -n "Configure openssh conf... "
 sed -i 's/#Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 2020' /etc/ssh/sshd_config
+sed -i 's/#Banner \/etc\/issue.net\/Banner \/etc\/banner/g' /etc/ssh/sshd_config
 echo -e "[ ${green}DONE${noclr} ]"
 /etc/init.d/ssh restart
 
@@ -117,6 +118,8 @@ echo -e "[ ${green}DONE${noclr} ]"
 echo -n "Configure dropbear conf... "
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=4343/g' /etc/default/dropbear
+sed -i 's/DROPBEAR_BANNER=""/DROPBEAR_BANNER="/etc/banner"/g' /etc/default/dropbear
+DROPBEAR_BANNER="/etc/banner"
 echo "/bin/false" >> /etc/shells
 echo -e "[ ${green}DONE${noclr} ]"
 /etc/init.d/dropbear restart
@@ -365,5 +368,43 @@ ufw enable
 
 echo
 sleep 3
+cd
 
+# scripts function
+echo -n "Copy scripts function..."
+wget -O /usr/local/bin/menu "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/main_menu.sh"
+wget -O /usr/local/bin/01 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/trial_account.sh"
+wget -O /usr/local/bin/02 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/generate_account.sh"
+wget -O /usr/local/bin/03 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/create_account.sh"
+wget -O /usr/local/bin/04 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/lock_account.sh"
+wget -O /usr/local/bin/05 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/unlock_account.sh"
+wget -O /usr/local/bin/06 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/delete_account.sh"
+wget -O /usr/local/bin/07 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/list_account.sh"
+wget -O /usr/local/bin/08 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/online_account.sh"
+wget -O /usr/local/bin/09 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/speedtest_cli.py"
+wget -O /usr/local/bin/10 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/system_info.sh"
+wget -O /usr/local/bin/11 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/monitor_bandwidth.sh"
+wget -O /usr/local/bin/12 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/monitor_server.sh"
+
+chmod +x /usr/local/bin/menu
+chmod +x /usr/local/bin/01
+chmod +x /usr/local/bin/02
+chmod +x /usr/local/bin/03
+chmod +x /usr/local/bin/04
+chmod +x /usr/local/bin/05
+chmod +x /usr/local/bin/06
+chmod +x /usr/local/bin/07
+chmod +x /usr/local/bin/08
+chmod +x /usr/local/bin/09
+chmod +x /usr/local/bin/10
+chmod +x /usr/local/bin/11
+chmod +x /usr/local/bin/12
+
+echo -e "[ ${green}DONE${noclr} ]"
+
+echo
+sleep 3
+cd
+
+history -c
 echo -e "${magenta}You need to reboot for change to take action.${noclr}"
