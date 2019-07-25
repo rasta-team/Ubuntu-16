@@ -1,0 +1,12 @@
+# Default aliases
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias update='apt-get update'
+alias upgrade='apt-get -y upgrade'
+alias install='apt-get -y install'
+alias remove='apt-get -y remove'
+alias purge='apt-get -y purge'
+alias autoclean='apt-get -y autoclean'
+alias autoremove='apt-get -y autoremove'
