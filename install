@@ -98,13 +98,13 @@ echo
 sleep 3
 cd
 
-wget -O /etc/ "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/sources/banner"
+wget -O /etc/banner "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/sources/banner"
 
 # openssh
 echo -n "Configure openssh conf... "
 sed -i 's/#Port 22/Port 22/g' /etc/ssh/sshd_config
 sed -i '/Port 22/a Port 2020' /etc/ssh/sshd_config
-sed -i 's/#Banner \/etc\/issue.net\/Banner \/etc\/banner/g' /etc/ssh/sshd_config
+sed -i 's/#Banner /etc/issue.net/Banner /etc/banner/g' /etc/ssh/sshd_config
 echo -e "[ ${green}DONE${noclr} ]"
 /etc/init.d/ssh restart
 
@@ -121,7 +121,6 @@ echo -n "Configure dropbear conf... "
 sed -i 's/NO_START=1/NO_START=0/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_PORT=22/DROPBEAR_PORT=4343/g' /etc/default/dropbear
 sed -i 's/DROPBEAR_BANNER=""/DROPBEAR_BANNER="/etc/banner"/g' /etc/default/dropbear
-DROPBEAR_BANNER="/etc/banner"
 echo "/bin/false" >> /etc/shells
 echo -e "[ ${green}DONE${noclr} ]"
 /etc/init.d/dropbear restart
