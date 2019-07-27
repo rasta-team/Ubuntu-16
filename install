@@ -376,7 +376,7 @@ cd
 echo -n "Copy scripts function..."
 wget -O /usr/local/bin/menu "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/main_menu.sh"
 wget -O /usr/local/bin/01 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/trial_account.sh"
-wget -O /usr/local/bin/02 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/generate_account.sh"
+wget -O /usr/local/bin/02 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/generate_accounts.sh"
 wget -O /usr/local/bin/03 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/create_account.sh"
 wget -O /usr/local/bin/04 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/lock_account.sh"
 wget -O /usr/local/bin/05 "https://raw.githubusercontent.com/ndiey/Ubuntu-16.04.6/master/functions/unlock_account.sh"
